@@ -1,7 +1,14 @@
 package graph;
 
+// This class shows the correction from one node to another with a flow limit.
 public class Edge {
-
+    /*
+    * from: The source node ID.
+    * to: The target code ID.
+    * capacity: The maximum amount of flow allowed through this edge.
+    * flow: The current flow through the edge which starts at 0.
+    * residual: This is used to reverse the flow if needed in Ford-Fulkerson (undo or adjust flows).
+    * */
     int from, to, capacity, flow;
     Edge residual;
 
