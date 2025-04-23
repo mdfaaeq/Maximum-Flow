@@ -3,8 +3,8 @@ package graph;
 import java.util.*;
 
 public class Graph {
-    int numberOfNodes;
-    List<Edge>[] neighbors;
+    private int numberOfNodes;
+    private List<Edge>[] neighbors;
 
     @SuppressWarnings("unchecked")
     public Graph(int numberOfNodes) {
@@ -18,8 +18,8 @@ public class Graph {
         Edge forwardEdge = new Edge(sourceNode, destinationNode, capacity);
         Edge backwardEdge = new Edge(destinationNode, sourceNode, 0);
 
-        forwardEdge.backEdge = backwardEdge;
-        backwardEdge.backEdge = forwardEdge;
+        forwardEdge.setBackEdge(backwardEdge);
+        backwardEdge.setBackEdge(forwardEdge);
 
         neighbors[sourceNode].add(forwardEdge);
         neighbors[destinationNode].add(backwardEdge);
@@ -29,4 +29,7 @@ public class Graph {
         return neighbors;
     }
 
+    public int getNumberOfNodes() {
+        return numberOfNodes;
+    }
 }

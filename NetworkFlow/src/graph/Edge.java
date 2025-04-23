@@ -9,14 +9,25 @@ public class Edge {
      * currentFlow: Flow currently passing through this edge
      * backEdge: The opposite edge used to undo/adjust flow
      */
-    int sourceNode, destinationNode, maxCapacity, currentFlow;
-    Edge backEdge;
+    private int sourceNode;
+    private int destinationNode;
+    private int maxCapacity;
+    private int currentFlow;
+    private Edge backEdge;
 
     public Edge(int sourceNode, int destinationNode, int maxCapacity) {
         this.sourceNode = sourceNode;
         this.destinationNode = destinationNode;
         this.maxCapacity = maxCapacity;
         this.currentFlow = 0;
+    }
+
+    public int getSourceNode() {
+        return sourceNode;
+    }
+
+    public int getDestinationNode() {
+        return destinationNode;
     }
 
     public int remainingCapacity() {
@@ -26,6 +37,10 @@ public class Edge {
     public void augment(int flowAmount) {
         currentFlow += flowAmount;
         backEdge.currentFlow -= flowAmount;
+    }
+
+    public void setBackEdge(Edge backEdge) {
+        this.backEdge = backEdge;
     }
 
     @Override
