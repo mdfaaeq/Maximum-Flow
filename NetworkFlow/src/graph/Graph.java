@@ -4,28 +4,29 @@ import java.util.*;
 
 public class Graph {
     int numberOfNodes;
-    List<Edge>[] edgesFromNode;
+    List<Edge>[] neighbors;
 
     @SuppressWarnings("unchecked")
     public Graph(int numberOfNodes) {
         this.numberOfNodes = numberOfNodes;
-        edgesFromNode = new ArrayList[numberOfNodes];
-        for (int i = 0; i < numberOfNodes; i++) {
-            edgesFromNode[i] = new ArrayList<>();
-        }
+        neighbors = new ArrayList[numberOfNodes];
+        for (int i = 0; i < numberOfNodes; i++)
+            neighbors[i] = new ArrayList<>();
     }
 
-    public void addEdge(int fromNode, int toNode, int maxFlow) {
-        Edge forwardEdge = new Edge(fromNode, toNode, maxFlow);
-        Edge reverseEdge = new Edge(toNode, fromNode, 0);
-        forwardEdge.reverseEdge = reverseEdge;
-        reverseEdge.reverseEdge = forwardEdge;
-        edgesFromNode[fromNode].add(forwardEdge);
-        edgesFromNode[toNode].add(reverseEdge);
+    public void addEdge(int sourceNode, int destinationNode, int capacity) {
+        Edge forwardEdge = new Edge(sourceNode, destinationNode, capacity);
+        Edge backwardEdge = new Edge(destinationNode, sourceNode, 0);
+
+        forwardEdge.backEdge = backwardEdge;
+        backwardEdge.backEdge = forwardEdge;
+
+        neighbors[sourceNode].add(forwardEdge);
+        neighbors[destinationNode].add(backwardEdge);
     }
 
-    public List<Edge>[] getEdgesFromNode() {
-        return edgesFromNode;
+    public List<Edge>[] getNeighbors() {
+        return neighbors;
     }
+
 }
-

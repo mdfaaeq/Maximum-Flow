@@ -3,33 +3,34 @@ package graph;
 // This class shows the correction from one node to another with a flow limit.
 public class Edge {
     /*
-     * fromNode: Starting point of the edge
-     * toNode: End point of the edge
-     * maxFlow: Maximum flow allowed through this edge
+     * sourceNode: Starting point of the edge
+     * destinationNode: End point of the edge
+     * maxCapacity: Maximum flow allowed through this edge
      * currentFlow: Flow currently passing through this edge
-     * reverseEdge: The opposite edge used to undo/adjust flow
+     * backEdge: The opposite edge used to undo/adjust flow
      */
-    int fromNode, toNode, maxFlow, currentFlow;
-    Edge reverseEdge;
+    int sourceNode, destinationNode, maxCapacity, currentFlow;
+    Edge backEdge;
 
-    public Edge(int fromNode, int toNode, int maxFlow) {
-        this.fromNode = fromNode;
-        this.toNode = toNode;
-        this.maxFlow = maxFlow;
+    public Edge(int sourceNode, int destinationNode, int maxCapacity) {
+        this.sourceNode = sourceNode;
+        this.destinationNode = destinationNode;
+        this.maxCapacity = maxCapacity;
         this.currentFlow = 0;
     }
 
-    public int getRemainingFlow() {
-        return maxFlow - currentFlow;
+    public int remainingCapacity() {
+        return maxCapacity - currentFlow;
     }
 
-    public void addFlow(int flowToAdd) {
-        currentFlow += flowToAdd;
-        reverseEdge.currentFlow -= flowToAdd;
+    public void augment(int flowAmount) {
+        currentFlow += flowAmount;
+        backEdge.currentFlow -= flowAmount;
     }
 
     @Override
     public String toString() {
-        return String.format("Edge %d -> %d | flow = %d / %d", fromNode, toNode, currentFlow, maxFlow);
+        return String.format("Edge %d -> %d | flow = %d / %d", sourceNode, destinationNode, currentFlow, maxCapacity);
     }
+
 }
