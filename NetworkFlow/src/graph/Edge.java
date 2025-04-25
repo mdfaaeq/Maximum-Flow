@@ -1,6 +1,14 @@
 package graph;
 
+// This class shows the correction from one node to another with a flow limit.
 public class Edge {
+    /*
+     * sourceNode: Starting point of the edge
+     * destinationNode: End point of the edge
+     * Capacity: Maximum flow allowed through this edge
+     * currentFlow: Flow currently passing through this edge
+     * reverseEdge: The opposite edge used to undo/adjust flow
+     */
     private int sourceNode;
     private int destinationNode;
     private int capacity;
