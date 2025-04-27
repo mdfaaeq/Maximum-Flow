@@ -14,7 +14,7 @@ public class MaxFlowSolver {
         // This maxFlow will store the total maximum flow from start to end
         int maxFlow = 0;
 
-        System.out.println("Starting to calculate the maximum flow...");
+        // System.out.println("Starting to calculate the maximum flow...");
 
         // Keep finding augmenting paths until there are none left
         while (true) {
@@ -48,13 +48,13 @@ public class MaxFlowSolver {
             }
             path.add(0, startNode); // Add the start node at the beginning
 
-            // Display the augmenting path found and its bottleneck (minimum residual capacity)
-            System.out.print("Augmenting path: ");
-            for (int i = 0; i < path.size(); i++) {
-                System.out.print(path.get(i));
-                if (i < path.size() - 1) System.out.print(" -> ");
-            }
-            System.out.println(" | Min Residual Capacity: " + minResidualCapacity);
+//            // Display the augmenting path found and its bottleneck (minimum residual capacity)
+//            System.out.print("Augmenting path: ");
+//            for (int i = 0; i < path.size(); i++) {
+//                System.out.print(path.get(i));
+//                if (i < path.size() - 1) System.out.print(" -> ");
+//            }
+//            System.out.println(" | Min Residual Capacity: " + minResidualCapacity);
 
             // Update the capacities along the path
             for (Edge edge = parentEdge[endNode]; edge != null; edge = parentEdge[edge.getSourceNode()]) {
@@ -65,7 +65,7 @@ public class MaxFlowSolver {
             maxFlow += minResidualCapacity;
         }
 
-        System.out.println("Maximum flow: " + maxFlow);
+        // System.out.println("Maximum flow: " + maxFlow);
         return maxFlow; // Return the total maximum flow found
     }
 }
