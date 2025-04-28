@@ -7,18 +7,17 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner inputScanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         while (true) {
             System.out.println("\nDo you want to:");
-            System.out.println("1. Run all files (bridge and ladder)");
-            System.out.println("2. Run a specific file");
-            System.out.println("3. Quit");
-            System.out.print("Enter 1, 2, or 3: ");
+            System.out.println("1. Run a specific file");
+            System.out.println("2. Quit");
+            System.out.print("Enter 1, or 2: ");
 
             int choice;
             try {
-                choice = Integer.parseInt(inputScanner.nextLine());
+                choice = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter a number.");
                 continue;
@@ -26,35 +25,18 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    runAllFiles();
-                    break;
-                case 2:
                     System.out.print("Enter the file name (e.g., bridge_1.txt or ladder_5.txt): ");
-                    String fileName = inputScanner.nextLine();
+                    String fileName = scanner.nextLine();
                     String filePath = "src/resources/" + fileName;
                     processFile(filePath);
                     break;
-                case 3:
+                case 2:
                     System.out.println("Exiting program.");
-                    inputScanner.close();
+                    scanner.close();
                     return;
                 default:
-                    System.out.println("Invalid choice. Please enter 1, 2, or 3.");
+                    System.out.println("Invalid choice. Please enter 1, or 2.");
             }
-        }
-    }
-
-    private static void runAllFiles() {
-        // Process bridge files
-        for (int i = 1; i <= 19; i++) {
-            String bridgeFile = "src/resources/bridge_" + i + ".txt";
-            processFile(bridgeFile);
-        }
-
-        // Process ladder files
-        for (int i = 1; i <= 20; i++) {
-            String ladderFile = "src/resources/ladder_" + i + ".txt";
-            processFile(ladderFile);
         }
     }
 
