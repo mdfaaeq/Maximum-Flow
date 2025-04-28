@@ -25,7 +25,7 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    System.out.print("Enter the file name (e.g., bridge_1.txt or ladder_5.txt): ");
+                    System.out.print("Enter the file name (e.g., bridge_1.txt - bridge_19.txt or ladder_1.txt - ladder_20.txt): ");
                     String fileName = scanner.nextLine();
                     String filePath = "src/resources/" + fileName;
                     processFile(filePath);
@@ -60,10 +60,13 @@ public class Main {
             }
             fileScanner.close();
 
+            // Set this to true to print augmenting paths, false to suppress them
+            boolean printPaths = false;
+
             long startTime = System.nanoTime();
-            int maxFlow = MaxFlowSolver.fordFulkerson(graph, 0, numberOfNodes - 1);
+            int maxFlow = MaxFlowSolver.fordFulkerson(graph, 0, numberOfNodes - 1, printPaths);
             long endTime = System.nanoTime();
-            long duration = (endTime - startTime) / 1_000_000; // convert to milliseconds
+            long duration = (endTime - startTime) / 1000000; // converting to milliseconds
 
             String fileName = new File(filePath).getName().replace(".txt", "").toLowerCase();
             System.out.println(fileName + " | Max Flow: " + maxFlow + " | Execution time: " + duration + " ms");
