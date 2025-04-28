@@ -1,3 +1,9 @@
+/**
+ * Name: Faaeq Fazal
+ * UOW ID: w2051891
+ * IIT ID: 20231190
+ */
+
 import graph.*;
 import solver.*;
 
@@ -27,7 +33,7 @@ public class Main {
                 case 1:
                     System.out.print("Enter the file name (e.g., bridge_1.txt - bridge_19.txt or ladder_1.txt - ladder_20.txt): ");
                     String fileName = scanner.nextLine();
-                    String filePath = "src/resources/" + fileName;
+                    String filePath = "src/main/resources/" + fileName;
                     processFile(filePath);
                     break;
                 case 2:
