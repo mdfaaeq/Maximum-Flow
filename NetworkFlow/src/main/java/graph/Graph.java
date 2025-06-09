@@ -1,9 +1,3 @@
-/**
- * Name: Faaeq Fazal
- * UOW ID: w2051891
- * IIT ID: 20231190
- */
-
 package graph;
 
 import java.util.*;
